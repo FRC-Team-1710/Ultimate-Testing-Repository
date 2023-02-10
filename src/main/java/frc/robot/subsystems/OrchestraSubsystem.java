@@ -21,14 +21,14 @@ public class OrchestraSubsystem extends SubsystemBase {
       //new WPI_TalonFX(50, "rio"),
       //new WPI_TalonFX(6, "rio"),
 
-      new WPI_TalonFX(12, "rio"),
-      new WPI_TalonFX(10, "rio"),
-      new WPI_TalonFX(3, "rio"),
-      new WPI_TalonFX(1, "rio"),
-      new WPI_TalonFX(9, "rio"),
-      new WPI_TalonFX(7, "rio"),
-      new WPI_TalonFX(6, "rio"),
-      new WPI_TalonFX(4, "rio")
+      new WPI_TalonFX(12, "carnivore uno"),
+      new WPI_TalonFX(10, "carnivore uno"),
+      new WPI_TalonFX(3, "carnivore uno"),
+      new WPI_TalonFX(1, "carnivore uno"),
+      new WPI_TalonFX(9, "carnivore uno"),
+      new WPI_TalonFX(7, "carnivore uno"),
+      new WPI_TalonFX(6, "carnivore uno"),
+      new WPI_TalonFX(4, "carnivore uno")
   };
   Orchestra _orchestra;
 
@@ -47,7 +47,8 @@ public class OrchestraSubsystem extends SubsystemBase {
       "Danger Zone",
       "BewareTheForest'sMushrooms",
       "Super Mario Bros Theme",
-      "WeLikeFortnite"
+      "WeLikeFortnite",
+      "Collective Consciousness"
   };
 
   /* track which song is selected for play */

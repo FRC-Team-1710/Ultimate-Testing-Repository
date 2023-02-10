@@ -62,9 +62,9 @@ public class RobotContainer {
 
   /* Test Select */
   private final boolean testingLeds = false;
-  private final boolean testingOrchestra = false;
+  private final boolean testingOrchestra = true;
   private final boolean testingPneumatics = false;
-  private final boolean testingTalonFX = true;
+  private final boolean testingTalonFX = false;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
