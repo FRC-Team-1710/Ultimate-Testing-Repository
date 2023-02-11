@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.LedCommand;
+import frc.robot.commands.TalonFXCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LedSubsystem;
 import frc.robot.subsystems.OrchestraSubsystem;
@@ -62,9 +63,12 @@ public class RobotContainer {
 
   /* Test Select */
   private final boolean testingLeds = false;
-  private final boolean testingOrchestra = true;
+  private final boolean testingOrchestra = false;
   private final boolean testingPneumatics = false;
-  private final boolean testingTalonFX = false;
+  private final boolean testingTalonFX = true;
+
+  /* Misc */
+  public boolean motorIsSpinning = false;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -109,10 +113,13 @@ public class RobotContainer {
 
     /* Motor Bindings */
     if (testingTalonFX) {
-      double motorSpeed = .75;
+      double motorSpeed = .5;
+
       spinMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(motorSpeed)));
-      //unSpinMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(-motorSpeed)));
-      stopMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(0)));
+      unSpinMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(-motorSpeed)));
+
+      spinMotor.onFalse(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(0)));
+      unSpinMotor.onFalse(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(0)));
     }
 
     /* LED Bindings */

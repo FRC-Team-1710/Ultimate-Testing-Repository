@@ -12,6 +12,7 @@ import frc.robot.Constants;
 
 public class TalonFXSubsystem extends SubsystemBase {
   TalonFX motor;
+  public double speed = 0;
   /** Creates a new test. */
   public TalonFXSubsystem() {
     motor = new TalonFX(Constants.TalonFXCanID);
@@ -24,5 +25,7 @@ public class TalonFXSubsystem extends SubsystemBase {
 
   public void spinMotor(double speed){
     motor.set(TalonFXControlMode.PercentOutput, speed);
+    this.speed = speed;
   }
+
 }
