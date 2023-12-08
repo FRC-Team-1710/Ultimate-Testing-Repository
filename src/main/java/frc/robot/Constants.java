@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
 
-  //Pneumatics Constants
+  /* Pneumatics Constants */
   public static final int phPort = 1;
   public static final int pcmPort = 1;
   public static final int kPneuForwardPort = 2;
@@ -22,11 +22,13 @@ public final class Constants {
   public static final int kPneu2ForwardPort = 0;
   public static final int kPneu2ReversePort = 7;
 
-  //TalonFX Constants
+  /* TalonFX Constants */
   public static final int TalonFXCanID = 50;
 
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
-    
   }
+
+  /* Encoder Constants */
+  public static final int encoderPort = 3;
 }

@@ -65,7 +65,8 @@ public class RobotContainer {
   private final boolean testingLeds = false;
   private final boolean testingOrchestra = false;
   private final boolean testingPneumatics = false;
-  private final boolean testingTalonFX = true;
+  private final boolean testingTalonFX = false;
+  private final boolean testingEncoders = true;
 
   /* Misc */
   public boolean motorIsSpinning = false;
@@ -75,7 +76,9 @@ public class RobotContainer {
    */
   public RobotContainer() {
 
-    m_LedSubsystem.setDefaultCommand(new LedCommand(m_LedSubsystem));
+    if (testingLeds){
+      m_LedSubsystem.setDefaultCommand(new LedCommand(m_LedSubsystem));
+    }
 
     // Configure the trigger bindings
     configureBindings();
