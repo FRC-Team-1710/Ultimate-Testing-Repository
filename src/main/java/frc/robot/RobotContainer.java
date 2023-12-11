@@ -8,6 +8,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.LedCommand;
 import frc.robot.commands.TalonFXCommand;
+import frc.robot.subsystems.EncoderSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LedSubsystem;
 import frc.robot.subsystems.OrchestraSubsystem;
@@ -54,12 +55,15 @@ public class RobotContainer {
   private final JoystickButton toggleConeOrCube = new JoystickButton(controller, XboxController.Button.kA.value);
   private final JoystickButton toggleWantsOrHas = new JoystickButton(controller, XboxController.Button.kB.value);
 
+  private final JoystickButton resetEncoder = new JoystickButton(controller, XboxController.Button.kA.value);
+
   /* Subsystems */
   private final PneumaticSubsystem m_PneumaticSubsystem = new PneumaticSubsystem();
   private final LedSubsystem m_LedSubsystem = new LedSubsystem();
   private final OrchestraSubsystem m_OrchestraSubsystem = new OrchestraSubsystem();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final TalonFXSubsystem m_TalonFXSubsystem = new TalonFXSubsystem();
+  private final EncoderSubsystem m_EncoderSubsystem = new EncoderSubsystem();
 
   /* Test Select */
   private final boolean testingLeds = false;
@@ -129,6 +133,11 @@ public class RobotContainer {
     if (testingLeds) {
       toggleConeOrCube.onTrue(new InstantCommand(() -> m_LedSubsystem.ToggleConeOrCubeColor()));
       toggleWantsOrHas.onTrue(new InstantCommand(() -> m_LedSubsystem.ToggleBlink()));
+    }
+
+    /* Encoder Bindings */
+    if (testingEncoders){
+      resetEncoder.onTrue(new InstantCommand(() -> m_EncoderSubsystem.resetEncoder()));
     }
 
   }

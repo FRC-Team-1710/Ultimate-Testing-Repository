@@ -23,19 +23,21 @@ public class EncoderSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("encoder angle", getAngle());
-
     if (getAngle() == 0) {
       ENCFAIL = true;
     } else {
       ENCFAIL = false;
     }
     SmartDashboard.putBoolean("ENCODER FAILURE", ENCFAIL);
-
   }
 
   public double getAngle() {
     getA = ((test_encoder.get() * 360) % 360);
     return getA;
+  }
+
+  public void resetEncoder(){
+    test_encoder.reset();
   }
 
 }
