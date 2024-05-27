@@ -65,7 +65,7 @@ public class OrchestraSubsystem extends SubsystemBase {
     /* A list of TalonFXs that are to be used as instruments */
     ArrayList<TalonFX> _instruments = new ArrayList<TalonFX>();
 
-    /* Initialize the TalonFX's to be used */
+    /* Initialize the TalonFXs to be used */
     for (int i = 0; i < _fxes.length; ++i) {
       _instruments.add(_fxes[i]);
     }
