@@ -7,8 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TalonFXSubsystem;
 
-
-
 public class TalonFXCommand extends CommandBase {
   /** Creates a new TalonFXCommand. */
 
@@ -48,7 +46,6 @@ public class TalonFXCommand extends CommandBase {
     } else if (speedMode == -1){
       m_TalonFXSubsystem.spinMotor(-speedToSet);
     }
-
 
   }
 
