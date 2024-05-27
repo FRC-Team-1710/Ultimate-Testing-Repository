@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+/* TODO: Rewrite this class with updated CTRE API */
+
 public class OrchestraSubsystem extends SubsystemBase {
   /** Creates a new OrchestraSubsystem. */
 

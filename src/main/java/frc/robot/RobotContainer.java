@@ -119,6 +119,7 @@ public class RobotContainer {
     }
 
     /* Motor Bindings */
+    /* TODO: Create a motor command as using InstantCommands with motors could result in motor damage (see: Oblarg's best programming practices on ChiefDelphi) */
     if (testingTalonFX) {
       double motorSpeed = .5;
 
