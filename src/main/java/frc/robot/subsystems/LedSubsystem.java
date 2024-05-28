@@ -40,7 +40,7 @@ public class LedSubsystem extends SubsystemBase {
   }
 
   public void SetAllianceColor(){
-    if (DriverStation.getAlliance() == Alliance.Red){
+    if (DriverStation.getAlliance().get() == Alliance.Red){
       redAlliance = true;
     } else {
       redAlliance = false;
