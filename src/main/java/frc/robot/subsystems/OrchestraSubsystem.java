@@ -6,32 +6,23 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.music.Orchestra;
+import frc.robot.Constants;
 
-import java.io.File;
-import java.util.ArrayList;
-
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-
-/* TODO: Rewrite this class with updated CTRE API */
+import com.ctre.phoenix6.Orchestra;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 public class OrchestraSubsystem extends SubsystemBase {
   /** Creates a new OrchestraSubsystem. */
 
-  WPI_TalonFX[] _fxes = {
-      //new WPI_TalonFX(50, "rio"),
-      //new WPI_TalonFX(6, "rio"),
+  TalonFX alphaMotor = new TalonFX(12, Constants.canivore);
+  TalonFX bravoMotor = new TalonFX(10, Constants.canivore);
+  TalonFX charlieMotor = new TalonFX(3, Constants.canivore);
+  TalonFX deltaMotor = new TalonFX(1, Constants.canivore);
+  TalonFX echoMotor = new TalonFX(9, Constants.canivore);
+  TalonFX foxtrotMotor = new TalonFX(7, Constants.canivore);
+  TalonFX golfMotor = new TalonFX(6, Constants.canivore);
+  TalonFX hotelMotor = new TalonFX(4, Constants.canivore);
 
-      new WPI_TalonFX(12, "carnivore uno"),
-      new WPI_TalonFX(10, "carnivore uno"),
-      new WPI_TalonFX(3, "carnivore uno"),
-      new WPI_TalonFX(1, "carnivore uno"),
-      new WPI_TalonFX(9, "carnivore uno"),
-      new WPI_TalonFX(7, "carnivore uno"),
-      new WPI_TalonFX(6, "carnivore uno"),
-      new WPI_TalonFX(4, "carnivore uno")
-  };
   Orchestra _orchestra;
 
   /*
@@ -64,16 +55,15 @@ public class OrchestraSubsystem extends SubsystemBase {
   int _lastPOV = 0;
 
   public OrchestraSubsystem() {
-    /* A list of TalonFXs that are to be used as instruments */
-    ArrayList<TalonFX> _instruments = new ArrayList<TalonFX>();
-
-    /* Initialize the TalonFXs to be used */
-    for (int i = 0; i < _fxes.length; ++i) {
-      _instruments.add(_fxes[i]);
-    }
 
     /* Create the orchestra with the TalonFX instruments */
-    _orchestra = new Orchestra(_instruments);
+    _orchestra.addInstrument(alphaMotor, 0);
+    _orchestra.addInstrument(bravoMotor, 1);
+    _orchestra.addInstrument(charlieMotor, 2);
+    _orchestra.addInstrument(deltaMotor, 3);
+    _orchestra.addInstrument(echoMotor, 5);
+    _orchestra.addInstrument(golfMotor, 6);
+    _orchestra.addInstrument(hotelMotor, 7);
 
   }
 

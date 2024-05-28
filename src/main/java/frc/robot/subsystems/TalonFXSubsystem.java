@@ -4,8 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -24,7 +23,7 @@ public class TalonFXSubsystem extends SubsystemBase {
   }
 
   public void spinMotor(double speed){
-    motor.set(TalonFXControlMode.PercentOutput, speed);
+    motor.set(speed);
     this.speed = speed;
   }
 

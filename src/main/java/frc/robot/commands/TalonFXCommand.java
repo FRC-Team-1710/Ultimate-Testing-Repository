@@ -11,14 +11,15 @@ public class TalonFXCommand extends CommandBase {
   /** Creates a new TalonFXCommand. */
 
   public TalonFXSubsystem m_TalonFXSubsystem;
-  public double speedToSet = 0;
+  public double speed = 0;
   public int speedMode = 0;
 
-  public TalonFXCommand(TalonFXSubsystem talonFXSubsystem, double speedToSet, int speedMode) {
+  public TalonFXCommand(TalonFXSubsystem talonFXSubsystem, double speed) {
     this.m_TalonFXSubsystem = talonFXSubsystem;
-    this.speedToSet = speedToSet;
+    this.speed = speed;
     this.speedMode += speedMode;
 
+    // Check for extraneous speeds
     if (this.speedMode > 1){
       this.speedMode = 1;
     } else if (this.speedMode < -1){
@@ -39,13 +40,7 @@ public class TalonFXCommand extends CommandBase {
   @Override
   public void execute() {
 
-    if (speedMode == 1){
-      m_TalonFXSubsystem.spinMotor(speedToSet);
-    } else if (speedMode == 0) {
-      m_TalonFXSubsystem.spinMotor(0);
-    } else if (speedMode == -1){
-      m_TalonFXSubsystem.spinMotor(-speedToSet);
-    }
+    m_TalonFXSubsystem.spinMotor(speed);
 
   }
 

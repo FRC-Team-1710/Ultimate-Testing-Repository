@@ -25,6 +25,9 @@ public final class Constants {
   /* TalonFX Constants */
   public static final int TalonFXCanID = 50;
 
+  /* Canivore */
+  public static final String canivore = "uno";
+
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }

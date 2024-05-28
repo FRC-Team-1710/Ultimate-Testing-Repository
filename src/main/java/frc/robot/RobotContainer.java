@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.LedCommand;
 import frc.robot.commands.TalonFXCommand;
@@ -15,10 +14,11 @@ import frc.robot.subsystems.OrchestraSubsystem;
 import frc.robot.subsystems.PneumaticSubsystem;
 import frc.robot.subsystems.TalonFXSubsystem;
 
-import com.ctre.phoenix.motorcontrol.can.TalonFXPIDSetConfiguration;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -119,15 +119,14 @@ public class RobotContainer {
     }
 
     /* Motor Bindings */
-    /* TODO: Implement TalonFXCommand instead of using InstantCommands as InstantCommands have no protection against motor damage (see: Oblarg's best programming practices on ChiefDelphi) */
+    // Use commands when dealing with motors, as InstantCommands have no protection against motor damage (see: Oblarg's best programming practices on ChiefDelphi)
     if (testingTalonFX) {
       double motorSpeed = .5;
 
-      spinMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(motorSpeed)));
-      unSpinMotor.onTrue(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(-motorSpeed)));
+      spinMotor.onTrue(new TalonFXCommand(m_TalonFXSubsystem, motorSpeed));
+      unSpinMotor.and(spinMotor.negate()).onTrue(new TalonFXCommand(m_TalonFXSubsystem, -motorSpeed));
 
-      spinMotor.onFalse(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(0)));
-      unSpinMotor.onFalse(new InstantCommand(() -> m_TalonFXSubsystem.spinMotor(0)));
+      spinMotor.or(unSpinMotor).onFalse(new TalonFXCommand(m_TalonFXSubsystem, 0));
     }
 
     /* LED Bindings */
